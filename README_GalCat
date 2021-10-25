@@ -1,1 +1,10 @@
-This readme file describes the galaxy catalogues used in this project
+This readme file describes the galaxy catalogues used in this project.
+The first intermediate products are catalogues named GalCat_tomo[1-5]_All_0.06GpAM_RA_Dec_g1_g2_w_den_Sij.dat,
+with the following columns:
+
+ra_deg, dec_deg, shear1, shear2, weight, z_true, delta, s11, s22, s12
+
+The last four columns are then combined to construct ellipticities by the Tidalator_2D code. 
+
+(To be continued...)
+
