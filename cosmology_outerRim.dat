@@ -1,0 +1,2 @@
+#OuterRim:
+cosmo = ccl.Cosmology(Omega_c=0.22, Omega_b=0.0448, h=0.71, sigma8 = 0.801, n_s= 0.963,w0=-1.00,wa=0.0, Omega_k=0.0)
