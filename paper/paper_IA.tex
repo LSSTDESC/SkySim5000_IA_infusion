@@ -1,0 +1,604 @@
+% mnras_template.tex 
+%
+% LaTeX template for creating an MNRAS paper
+%
+% v3.0 released 14 May 2015
+% (version numbers match those of mnras.cls)
+%
+% Copyright (C) Royal Astronomical Society 2015
+% Authors:
+% Keith T. Smith (Royal Astronomical Society)
+
+% Change log
+%
+% v3.0 May 2015
+%    Renamed to match the new package name
+%    Version number matches mnras.cls
+%    A few minor tweaks to wording
+% v1.0 September 2013
+%    Beta testing only - never publicly released
+%    First version: a simple (ish) template for creating an MNRAS paper
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic setup. Most papers should leave these options alone.
+%\documentclass[fleqn,usenatbib]{mnras}
+\documentclass[useAMS,usenatbib]{mn2e}
+
+% MNRAS is set in Times font. If you don't have this installed (most LaTeX
+% installations will be fine) or prefer the old Computer Modern fonts, comment
+% out the following line
+%\usepackage{newtxtext,newtxmath}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+%\usepackage[T1]{fontenc}
+
+% Allow "Thomas van Noord" and "Simon de Laguarde" and alike to be sorted by "N" and "L" etc. in the bibliography.
+% Write the name in the bibliography as "\VAN{Noord}{Van}{van} Noord, Thomas"
+%\DeclareRobustCommand{\VAN}[3]{#2}
+%\let\VANthebibliography\thebibliography
+%\def\thebibliography{\DeclareRobustCommand{\VAN}[3]{##3}\VANthebibliography}
+
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+\input{abbrev}
+\input{psfig.sty}
+
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{txfonts}
+\usepackage{multirow}
+\usepackage{afterpage}
+\usepackage{xcolor}
+%\usepackage[draft]{hyperref}
+%\usepackage{ulem} % allows for strikethrough with \sout{}
+
+
+%\usepackage[paperheight=10in,paperwidth=8.5in]{geometry}
+
+\setlength{\topmargin}{-0.8in}
+\paperheight 11in
+\paperwidth 8.5in
+%\setlength{\textheight}{9.8in}
+%\setlength{\textwidth}{7.3in}
+\setlength{\textheight}{9.5in}
+\setlength{\textwidth}{7.1in}
+
+\definecolor{mypink1}{rgb}{0.858, 0.188, 0.478}
+\definecolor{mygreen1}{rgb}{0.258, 0.788, 0.878}
+\definecolor{myorange1}{rgb}{0.5, 0.2, 0.2}
+\newcommand{\NM}[1]{\textcolor[RGB]{0,150,0}{#1}}
+\newcommand{\RR}[1]{\textcolor{blue}{#1}}
+\newcommand{\JHD}[1]{\textcolor{mypink1}{#1}}
+\newcommand{\snr}{$\mathcal{S}/\mathcal{N}$ }
+\newcommand{\mycomment}[1]{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+% Please keep new commands to a minimum, and use \newcommand not \def to avoid
+% overwriting existing commands. Example:
+%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+% Title of the paper, and the short title which is used in the headers.
+% Keep the title short and informative.
+\title[Lensing beyond 2pt: accounting for IA]{Cosmic shear beyond 2-point statistics: marginalisation over galaxy intrinsic alignment}
+
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[J. Harnois-D\'{e}raps et al.]{Joachim Harnois-D\'{e}raps$^{1}$\thanks{E-mail: joachim.harnois-deraps@ncl.ac.uk} and others
+\\
+% List of institutions
+$^{1}$School of Mathematics, Statistics and Physics, Newcastle University, Herschel Building, NE1 7RU, Newcastle-upon-Tyne, UK\\
+}
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2021}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--21}
+%\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% Abstract of the paper
+\begin{abstract}
+TBD
+\end{abstract}
+
+% Select between one and six entries from the list of approved keywords.
+% Don't make up new ones.
+\begin{keywords}
+Gravitational lensing: weak -- Methods: numerical -- Cosmology: dark matter, dark energy \& large-scale structure of Universe 
+\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+
+  
+%----------
+\section{Introduction}
+\label{sec:intro}
+%----------
+
+Cosmology, gravitational lensing, cosmic shear, 2pt, beyond-2pt, simulations for signal and for secondary signal/systematics, IA-infusion, this paper... 
+
+ %----------
+\section{Cosmic shear}
+\label{sec:theory}
+%----------
+
+Cosmic shear can be measured with $\gamma$-2PCF or with alternative probes....
+
+%-------------------------
+\subsection{$\gamma$-2PCF}
+\label{subsec:wl-th}
+
+
+%---------------
+\begin{figure}
+\includegraphics[width=\columnwidth]{graphs/Nz}
+\caption{Redshift distribution in our simulations, taken from the Year-1 specifications of the LSST Science Requirement Document \citep{LSST-SRD} {[\it check Y1 vs Y10}].}
+\label{fig:Nz}
+\end{figure}
+%--------------
+
+
+ Shear two-point correlation functions ($\gamma$-2PCFs hereafter) can be predicted with percent-level precision and are therefore an ideal quantity to validate weak lensing simulations. In the Limber approximation\footnote{See \citet{Kilbinger17} for a comparison between the Limber approximation and the exact calculations.}, the lensing power spectrum $C^{ij}_{\ell}$ is obtained from an integral over the three-dimensional matter power spectrum $P_{\delta}(k,z)$:
+  \begin{eqnarray}
+C_{\ell}^{ij} = \int_0^{\chi_{\rm H}}  \frac{q^i(\chi) \,q^j(\chi)}{\chi^2} \, P_{\delta}\, \bigg(\frac{\ell+1/2}{\chi},z(\chi)\bigg) \ {\rm d}\chi,
+\label{eq:C_ell}
+\end{eqnarray}
+where $\chi_{\rm H}$ is the co-moving distance to the horizon, $c$ is the speed of light, $H_0$ the Hubble parameter,  and the  lensing kernels $q^{i}$ are given by:
+\begin{eqnarray}
+q^i(\chi) = \frac{3}{2}\Omega_{\rm m} \, \bigg(\frac{H_0}{c} \bigg)^2 \frac{\chi}{a(\chi)} \int_{\chi}^{\chi_{\rm H}} n^i(\chi')\frac{{\rm d}z}{{\rm d} \chi'}\frac{\chi' - \chi}{\chi'}{\rm d}\chi' \, .
+\label{eq:q_lensing}
+\end{eqnarray}
+In the previous expression, $n^i(z)$ refers to the redshift distribution  in tomographic bin `$i$', while $a(\chi)$ is the scale factor at comoving distance $\chi$ from the observer {[\it might need to define $\Omega_m$ here]}.  
+ The matter power spectrum is computed from  {\sc Halofit} \citep{Takahashi2012}, however  other public tools provide $P_{\delta}(k,z)$ predictions, including e.g. {\sc HMcode} \citep{HMCode2020}, the {\sc EuclidEmulator} \citep{EuclidEmulator}, the {\sc BACCO} emulator \citep{BACCOEmulator} or the Mira Titan emulator \citep{miraTitan}. 
+ Predictions for the $\gamma$-2PCFs are finally computed from Eq. (\ref{eq:C_ell}) as:
+ \begin{eqnarray}
+\xi_{\pm}^{ij}(\vartheta) = \frac{1}{2\pi}\int_0^{\infty} C_{\ell}^{ij} \, J_{0/4}(\ell \vartheta) \, \ell \, {\rm d}\ell,
+\label{eq:xipm_th}
+\end{eqnarray}
+where $J_{0/4}(x)$ are Bessel functions of the first kind. In this paper, these calculations are carried out by {\sc pyccl}\footnote{{\sc pyccl}:pypi.org/project/pyccl}  \citep{CCL}.
+The $n^i(z)$ are taken from the LSST Science Requirement Document \citep{LSST-SRD} and given by
+ \begin{eqnarray}
+n(z) = N_0 z^2 {\rm exp} \left[-\left(\frac{z}{z_0}\right)^\alpha \right]\, ,
+\label{eq:nz}
+\end{eqnarray}
+with $(z_0, \alpha) = (0.13, 0.78)$ and $N_0$ normalised to provide a number density of $n_{\rm eff}$ = 3.0 gal arcmin$^{-2}$. This lower than the expected number density for the first data release ($n_{\rm eff}=10$ gal arcmin$^{-2}$), but is large enough to validate the methods presented in this paper and makes the calculation more tractable. The $n(z)$ is further split into five equi-populated tomographic bins, and smoothed with a Gaussian filter of width $\sigma = 0.05(1+z)$ in order to mimic the photometric selection process [{\it confirm with Niko}].  The resulting distributions\footnote{The construction of these tomographic $n(z)$ can be reproduced in {github...CCL\_SRD\_Niko}.} are shown in Figure \ref{fig:Nz}. 
+
+The cosmic shear signal can be measured from the ellipticities $\epsilon_{1/2}$ of simulated or observed galaxies, which, in absence of systematics and secondary signals, are unbiased estimators  of the cosmic shear components $\gamma_{1/2}$. The $\gamma$-2PCF are then estimated as:
+ \begin{eqnarray}
+ \widehat{\xi_{\pm}^{ij}}(\vartheta) = \frac{\sum_{a,b} w_a w_b \left[\epsilon_{a, \rm t}^i\epsilon_{b, \rm t}^j     \pm \epsilon_{a, \times}^i\epsilon_{b, \times}^j    \right]\Delta_{ab}(\vartheta)}{\sum_{a,b} w_a w_b} \, ,
+ \label{eq:2PCF_estimator}
+  \end{eqnarray}
+where the sum is over all pairs of galaxies $a,b$ separated by an angular separation $\vartheta$, taken from tomographic bins $i,j$. The tangential/cross components of their ellipticities are denoted as $\epsilon_{\rm t/\times}$, respectively. 
+$\Delta_{ab}(\vartheta)$ is the binning operator, equal to unity if the angular separation between the two galaxies falls within the $\vartheta$-bin, and zero otherwise, and the shape weights $w_{a,b}$ are set to unity. The measurements are carried out by {\sc Treecorr} \citep{TreeCorr}, in which we set the {\sc bin\_slop} parameter to 0.05. We compute the correlations in nine logarithmically-spaced angular bins ranging from 0.5 to 475.5 arcmin. 
+ 
+We  produce convergence maps from each of these catalogues by assigning the shear signal onto spherical {\sc Healpix}\footnote{{\sc Healpix}: http://healpix.sf.net}  maps \citep{healpix} with $N_{\rm side}=4096$, then using the standard Kaiser \& Squires inversion technique \citep{KaiserSquires} implemented in {\sc healpy} to reconstruct a convergence maps with the same angular resolution, including a 2.0 arcmin smoothing beam in the inverse transform.
+ 
+ {[\it Some of this should go in the simulation section]}
+ 
+ %-------------------------
+\subsection{Beyond-2pt}
+\label{subsec:beyond-2pt}
+
+ Mention the different probes, how they are measured, some on galaxy catalogues, some on kappa maps...
+ Kappa: Peaks, minima, lensing PDF,  Map3, Map2, MF,
+ shear cats: squeezed bispectrum, DSS, three-point...
+ models: lensing PDF, squeezed bispectrum, Map2, Map3, DSS
+ %-------------------
+ \section{Intrinsic alignment models}
+ \label{sec:IA_th}
+ %-------------------
+ 
+Galaxies interact with the tidal forces caused by the large-scale structure  they live in, causing their intrinsic shapes to acquire correlated alignments that has nothing to do with the correlations caused by weak lensing. This therefore acts as a secondary signal that contaminates the shape correlation measurements carried out in a cosmic shear analysis. There is no consensus on the actual physical model that describes the IA signal, and even when adopting these, the free parameters they contain are only weakly constrained from the data \citep[see][for a review]{IA_review}.  %The most widely used model in the literature is the non-linear alignment model of \citet{NLA}, however it is now recognised that this is an effective model with limited precision, and the community is now progressively shifting towards more complex models. 
+In this paper we consider four such IA models that we describe in the following sub-sections. In all cases, our models couple the galaxy intrinsic shapes with the local over-density and projected tidal field , then prescribe an intrinsic ellipticity tensor $\gamma_{ij}^{\rm IA}$, from which observed ellipticities are extracted as:
+ \begin{eqnarray}
+\epsilon_{1}^{\rm IA} = \gamma_{xx}^{\rm IA} - \gamma_{yy}^{\rm IA} \, , \hspace{1.5cm}\epsilon_{2}^{\rm IA} = 2 \gamma_{xy}^{\rm IA}\, .
+\label{eq:tidal_th_deltaNLA}
+\end{eqnarray}
+
+
+ 
+\subsection{Non-linear alignment (NLA)}
+
+ 
+%The observed ellipticity of a galaxy ${\boldsymbol \epsilon}_{\rm obs} $ is a combination of its intrinsic shape ${\boldsymbol \epsilon}_{\rm int}$ and a cosmic shear signal ${\boldsymbol \gamma}$, the former of which can be further divided in a random component ${\boldsymbol \epsilon}^{\rm ran}$ and an alignment term ${\boldsymbol \epsilon}^{\rm IA}$.
+The NLA model of \citet{NLA} is the most widely used IA model in the cosmic shear literature thus far. According to the NLA, IA are caused by a linear coupling between galaxy shapes and the non-linear large-scale tidal field at the galaxy position. In the context of  two-point functions, these intrinsic shapes contribute to an intrinsic-intrinsic ($II$) term and an intrinsic-shear coupling ($GI$) term \citep{Hirata2004}, both secondary signals to the true cosmic shear ($GG$) term, with the latter typically dominating the IA sector in cross-tomographic measurements.  The $II$ and $GI$ terms  can be both computed from the matter power spectrum as: 
+ \begin{eqnarray}
+P_{II}(k,z) =  \left(\frac{A_{\rm IA}\bar{C_1}\bar{\rho}(z)}{D(z)}\right)^2a^4(z) P_{\delta}(k,z)
+\label{eq:Pk_II_th}
+\end{eqnarray}
+and
+ \begin{eqnarray}
+P_{GI}(k,z) = - \frac{A_{\rm IA}\bar{C_1}\bar{\rho}(z)}{D(z)}a^2(z) P_{\delta}(k,z) \, ,
+\label{eq:Pk_GI_th}
+\end{eqnarray}
+which can then be past to the Limber integration (Eqs. \ref{eq:C_ell} and \ref{eq:xipm_th}) to compute  the secondary signals $\xi_{\pm}^{II}(\vartheta)$ and $\xi_{\pm}^{GI}(\vartheta)$. 
+In the above expression,  $D(z)$ is the linear growth factor, $\bar{\rho}(z)$ is the mean matter density at redshift $z$ and $\bar{C_1}=5\times 10^{-14} M_{\odot}^{-1} h^{-2} {\rm Mpc}^3$ is a constant calibrated in \citet{Brown2002}. 
+The strength of the tidal coupling is modulated by the amplitude parameter $A_{\rm IA}$, which is the main NLA parameter constrained by current cosmic shear surveys. Note that this model can be augmented by redshift and luminosity dependences, however we do not use these here. 
+
+
+The NLA intrinsic ellipticities $\epsilon_{1,2}^{\rm NLA}$ are related to tidal field $s_{ij}$ by:
+ \begin{eqnarray}
+\epsilon_1^{\rm NLA} = - \frac{A_{\rm IA}\bar{C_1}\bar{\rho}(z)}{D(z)} (s_{xx} - s_{yy}) \,\,\,\,,   \epsilon_2^{\rm NLA} = - \frac{2 A_{\rm IA}\bar{C_1}\bar{\rho}(z)}{D(z)} s_{xy}\;,
+\label{eq:tidal_th}
+\end{eqnarray}
+where $s_{ij} = \partial_{ij}\phi$ are the Cartesian components of the tidal tensor of the gravitational potential. Note that the term `non-linear' in the model name can be  misleading, as it refers to the non-linear matter power spectrum $P(k)$ that is used in its calculations; the coupling between the intrinsic galaxy shapes and the tidal field is still linear.   Eq.( \ref{eq:tidal_th}) is used to assign intrinsic ellipticities to galaxies, given maps of the tidal field components $s_{xx}$, $s_{yy}$ and $s_{xy}$ (see Sec. \ref {subsec:IA_infusion}).
+
+\subsection{$\delta$-NLA}
+\label{subsec:IA_th_ext}
+
+%[{\it here}]
+
+%As discussed later, the key quantity of interest to cosmic shear analysis is not the tidal tensor itself but its trace-free version, since shape correlations with the density field are subdominant, even though peaks in high density environments are less elliptical on average. Consequently, the model itself has a restricted range of validity: on small scales, higher order couplings to the ellipticity field ${\boldsymbol \epsilon}^{\rm IA}$  become important, however these are neglected in the NLA model. Only the non-linear evolution of the tidal tensor itself is taken into account, since it does fit observations quite well.
+
+%We note that the NLA predicts additional higher-order terms and non-zero $B$-modes \citep{Hirata2004} that we neglect  in this analysis. Also, as shown in \citet{IA_EFT}, the NLA model can be interpreted as the lowest order description of the alignment process of galaxies in the light of an effective field theory description. 
+
+
+The NLA model presented in the last section has been widely used in cosmic data analyses, but it has important known limitations and is therefore bound to fail at describing the IA signal with high precision.
+A perturbation theory extension to the NLA has been introduced in \citet{Blazek2015} and  \citet{Blazek2019},  where it is recognised that higher order couplings could be important and should be considered. The first additional term to be included is the over-density weighting term, which is caused by the fact that the intrinsic alignment of galaxies can only be observed at the galaxy positions, which are not distributed randomly on the sky but instead trace the underlying matter density,  `$\delta$', although the exact biasing scheme is not currently know. Accounting for this extra term in theoretical predictions is done with one-loop perturbation theory  \citep{Blazek2019}, and is implemented in {\sc pyccl}. Physically, it corresponds to adding a $\delta$-weight to the NLA predictions at the local galaxy positions, effectively representing the different tracer properties. At the level of numerical simulations, this could be done in principle simply by augmenting the NLA ellipticities with this weight, namely:
+ \begin{eqnarray}
+\epsilon_{1/2}^{\delta-\rm NLA} = \epsilon_{1/2}^{\rm NLA}\times(1 + b_{\rm TA}\delta) \, ,
+\label{eq:tidal_th_deltaNLA}
+\end{eqnarray}
+where the term $b_{\rm TA}$ corresponds to the (largely unconstrained) biasing relation between these source galaxies and the underlying matter field. In practice, however, we find that this is noisy, and that it is instead preferable to generate mocks catalogues with the biasing scheme directly applied when assigning galaxy positions, after which no weighting is necessary. Nevertheless, Eq. (\ref{eq:tidal_th_deltaNLA}) can be used to modify the value of $b_{\rm TA}$. Indeed, from a mock with a given bias $b_{\rm TA, orig}$, we can rescale the IA contribution to a different $b_{\rm TA, new}$  as:
+\begin{eqnarray}
+{\boldsymbol \epsilon}^{\rm int}_{b_{\rm TA, new}}  = \frac{(1 + b_{\rm TA, new}\delta)}{(1 + b_{\rm TA, orig}\delta)}{\boldsymbol \epsilon}^{\rm int}_{b_{\rm TA, orig}} \, .
+\label{eq:bta_rescale}
+\end{eqnarray}
+
+
+Compared to the NLA, the $\delta$-NLA is a stronger IA model, especially on small scales \citep{Blazek2019}, and seems to be preferred by some hydrodynamical simulations \citep{Hilbert_IA2017}. It is also better motivated from a physical point of view, since we know that the galaxies trace dark matter  and are not randomly distributed in our Universe as the NLA assumes.
+
+
+%-----------------------------------
+\subsection{Tidal Torque (TT)}
+\label{subsec:IA_th_TT}
+
+As shown in \citet{Blazek2019}, one-loop perturbative calculations include another term, by which galaxies acquire an intrinsic alignment via a coupling between their angular momentum and the tidal field, which can be re-expressed as a quadratic coupling between the tidal field and the shape. In this tidal torque model (TT), intrinsic ellipticities are given by:
+\begin{eqnarray}
+\gamma_{ij}^{\rm IA, TT} = C_2 \left[ \sum_{k=x,y,z} s_{ik} s_{kj} -\frac{1}{3} \delta_{ij} s^2 \right] \, ,
+\label{eq:tidal_th_TT}
+\end{eqnarray}
+where 
+\begin{eqnarray}
+C_2 = \frac{5 A_2 \bar{C_1} \Omega_{\rm m} \rho_{\rm crit}}{D^2(z)} \,  = \left[ \frac{-5 A_2}{A_1 D(z)} \right] C_1.
+\end{eqnarray}
+Under the approximation that line-of-sight alignments are mostly suppressed from cosmic shear measurement due to the broad lensing kernels, 
+we show in  Appendix \ref{app:2d_TT} that the terms inside the square bracket in Eq. (\ref{eq:tidal_th_TT}) leads to:
+\begin{eqnarray}
+\epsilon_1^{\rm TT} = C_2  \left[ s_{xx}^2 - s_{yy}^2\right] \, , \epsilon_2^{\rm TT} = 2 C_2 s_{xy}\left[s_{xx}+s_{yy}  \right]\, ,
+\end{eqnarray}
+both quadratic in the tidal field components.
+
+
+%-----------------------------------
+\subsection{$\delta$-TT}
+\label{subsec:IA_th_TT}
+
+Following the relation between the NLA and the $\delta$-NLA model, galaxies in the TT model are also assume to be randomly scattered on the sky, which we know to be a bad approximation. Computing the next-order contribution to the TT model involves two-loop perturbation theory calculations that have not been done yet due to the significantly higher complexity of such task. in simulations however, the $\delta$-weighting term is straight-forward to implement, as it involves to simply infuse the TT model onto galaxies that trace the matter field with a non-zero biasing factor. As for the $\delta$-NLA model, the $\delta$-TT ellipticities can  be related to the TT model as:
+\begin{eqnarray}
+\epsilon_{1/2}^{\delta-\rm TT} = \epsilon_{1/2}^{\rm TT}\times(1 + b_{\rm TA}\delta) \, .
+\label{eq:tidal_th_deltaTT}
+\end{eqnarray}
+ There are currently no theoretical models for $\delta$-TT, which means that predictions from this model are, at the moment, completely simulation-based. 
+ 
+It is worth recalling here that other IA models exist in the literature, and that at this point observations are not precise enough to set strong constraints on them, further motivating our flexible multi-model approach.  
+
+
+%\subsection{Likelihood}
+%\label{subsec:likelihood}
+
+%Multi-Gaussian likelihood, analytical Covariance matrix (Gauss + non-Gauss + SSC) from {\sc TJPCov}, Firecrown, sampler, priors.
+
+%---------------------
+\section{Simulations}
+\label{sec:sims}
+
+%-------------
+\subsection{Cosmic shear galaxy catalogues} 
+\label{subsec:WL_cats}
+
+The weak lensing simulations developed for this work are based on ray-tracing mass sheets produced from the Outer Rim $N$-body simulation \citep{OuterRim}, which evolved 10,240$^3$ particles in a (5.225 Gpc)$^3$ cosmological volume, assuming a flat $\Lambda$CDM cosmology with $\Omega_{\rm m}$=0.2648, $\Omega_{\rm b}$=0.0448, $h$=0.71, $\sigma_8$ = 0.801, $n_{\rm s}$= 0.963, $w_0$=-1.00. A total of 101 particle snapshots were originally saved, of which we use only those with $z<4.0$. Particles from each dump are assigned to curved mass shells approximately 114 Mpc thick, producing a sequence of 57 {\sc Healpix} maps $\delta(\theta,\phi,\chi_i)$ with {\sc nside} = 8192 and $i=1..57$, filling up a light-cone over an octant up to $z=3$. %More details on this procedure can be found  in \citet{cosmoDC}, where lensing quantities are computed specifically for the generation of the {\sc cosmoDC2}  synthetic sky catalogue.
+
+Ray-tracing is performed in the Born approximation, summing over the mass shells using the $\chi$-integral of Eq. (\ref{eq:C_ell}). A source plane is placed at the high-redshift edge of every mass planes, resulting in a series of convergence  maps  $\kappa(\theta,\phi,\chi_i)$ that are subsequently transformed into shear maps $\gamma_{1/2}(\theta,\phi,\chi_i)$ using the Kaiser-Squires methods \citep{KaiserSquires}, which is implemented via efficient {\sc HealPy alm2map} routines.
+
+We position galaxies in the light cone following exactly our chosen $N(z)$, and interpolate the shear quantities at their location. We follow two distinct algorithm to achieve this:
+\begin{enumerate}
+\item {\it Random:} galaxies RA and Dec are distributed randomly on the octant, thereby matching this fundamental assumptions in the NLA and TT models. 
+\item {\it Linear bias:} galaxies RA and Dec are sampled from the mass sheets smoothed\footnote{We also tried sampling the field with 0.1 and 0.5 $h^{-1}$Mpc but this resulted in noisier results.} over 1.0 $h^{-1}$Mpc (comoving), assuming a linear bias of $b_{\rm TA}$, now matching instead the assumptions of the $\delta$-NLA and $\delta$-TT models. With this method we produce galaxy positions assuming first $b_{\rm TA}=1.0$ (our fiducial case) and also $b_{\rm TA}=2.0$, enhancing the  model flexibility. 
+\end{enumerate}
+
+Since source clustering is a higher order effect in cosmic shear, the measured $\xi_{\pm}$ from these three mocks (random, $b_{\rm TA}=1.0$ and $b_{\rm TA}=2.0$) show negligible differences ({\it to quantify and cite}).
+In contrast, the impact on the IA contamination is significant and can double the secondary signal in certain circumstances. The main explanation for this is that while clustered sources are uncorrelated with the foreground matter responsible for the lensing signal, the high-density regions they live are also subject to the largest tidal fields. 
+
+%----------
+\subsection{Projected tidal fields}
+\label{subsec:IA_sims}
+
+\begin{figure*}
+\caption{Density field and the associated projected tidal field tensors.}
+\label{fig:maps}
+\end{figure*}
+
+Our infusion method completely relies on couplings between intrinsic galaxy shapes and the local tidal field, hence the first step in our method consist in extracting the tidal field maps $s_{ij}(\theta,\phi,\chi_i)$ from the mass maps $\delta(\theta,\phi,\chi_i)$ that source them. In three dimensions, trace-free tidal tensor $s_{ij}(\boldsymbol x)$ can be obtained from the matter over-density field $\delta(\boldsymbol x)$ as   \citep{Catelan_IA_Tidal}:
+\begin{eqnarray}
+ \widetilde{s}_{ij} (\boldsymbol k)  = \left[\frac{k_i k_j}{k^2} - \frac{\delta_{ij}}{3}\right]  \widetilde {\delta}(\boldsymbol k) \mathcal{G}(\sigma_{\rm G}) \, ,
+ \label{eq:sij}
+\end{eqnarray}
+where $\mathcal{G}(\sigma_{\rm G})$ is a three-dimensional Gaussian function described by a single (free) parameter $\sigma_{\rm G}$ that  controls the physical scales which are allowed to affect the IA term in our model. 
+Tilde symbols  denote Fourier transformed quantities,  the indices $(i,j)$ label the components of the Cartesian wave-vector $\boldsymbol{k}^T = (k_x,k_y,k_z)$, and $k^2 = k_x^2 + k_y^2 + k_z^2$. 
+As shown in \citet{Tidalator} for Cartesian coordinates, projected tidal fields  computed from projected mass sheets provide and excellent agreement with the NLA model, which in contrast computes the full tidal fields from the three-dimensional matter density and project along the radial dimension at the end. We promote this transformation to curved-sky in this work, exploiting the  polarisation {\sc alm2map} operations built in {\sc Healpy}. In particular, noting that $Q=s_{xx}-s_{yy}$, $U=s_{xy}$ and $\delta=s_{xx}+s_{yy}$, we compute the curved-sky tidal field tensors ${s}_{ij}({\boldsymbol \theta})$ as:
+ \begin{eqnarray}
+s_{xx}({\boldsymbol \theta})  =  \left[\frac{ \delta + Q}{2}  - \frac{\delta}{3}\right] \, ,s_{yy}({\boldsymbol \theta})  =  \left[\frac{\delta - Q}{2}  - \frac{\delta}{3}\right] \, , s_{xy}({\boldsymbol \theta}) = U
+ \label{eq:sij_2D_sph}
+ \end{eqnarray}
+where the $U({\boldsymbol \theta})$ and $Q({\boldsymbol \theta})$ maps are smoothed by the Gaussian beam with width $\sigma_{\rm G}$. We suppress large artificial tidal fields at the maps boundary by replicating 8$\times$ the density maps defined on the octant and working on a full sky density $\delta$; we re-apply the octant mask on the tidal field maps after the operation. Note that the value of $\sigma_{\rm G}$ is a free parameter both in the infusion technique described in this paper and in the NLA and TATT models. We therefore explore two cases, $\sigma_{\rm G}=0.1$Mpc and 0.5Mpc, however this may be further optimised in the future.
+
+
+
+%are specified within the NLA model. Smoothing amounts to selecting physical scales that do not contribute to the alignment of galaxies, which is still a debatable quantity, but is also introduced for numerical stability. \citet{Blazek2015} argues that 1.0 $h^{-1}$Mpc could be a reasonable fiducial value, being larger then the typical halo size, but recognizes that one-halo terms are also required to better match the observations. In their later work, \citet{Blazek2019} do not include smoothing at all, and neither do the KiDS-1000 nor DES-Y1 analyses based on the NLA model \citep{KiDS1000_Asgari,DESY1_Troxel}. In this work we used a two-dimensional Gaussian filter and calibrated $\sigma_{\rm G}$ empirically to $\sigma_{\rm G}=0.1h^{-1}$Mpc (see Sec. \ref{subsubsec:sigma_G}), however these two choices are arbitrary and could possibly be better optimised in the future; we also explore $\sigma_{\rm G}=0.5h^{-1}$Mpc later on.  We note that the smoothing scale is degenerate with the resolution of the simulation itself, and that one should use caution when smoothing on scales that approach the resolution limits.
+
+%We employ a numerical technique worth mentioning here: the Fourier transforms involved in computing Eq. (\ref{eq:sij_2D}) are computed from the full (projected) periodic boxes of the simulations, then interpolated on the light-cones. We find that tidal field computed directly from the $10\times10$ deg$^2$ light-cones introduces significant large scales features in the tidal field maps, largely caused by  the non-periodic boundary conditions, which our method avoids.
+Projected tidal field maps $s_{11}$, $s_{22}$ and $s_{12}$ are constructed that way for each mass sheets; Fig. \ref{fig:maps} shows the  three tidal fields and the mass maps for one of them. We can clearly see the connection between all maps around over-dense regions. {\it (Include a figure of $s_ij$ and $\delta$)}. 
+
+{\it [Mention normalisation of the tidal fields by $0.6252 = H_0/114$ = 1/shell-thickness}
+
+%of every light-cones and interpolated at the position of every galaxy. Fig. \ref{fig:tidalator} illustrates this process for a small zoomed-in patch at $z\sim0$, starting from a $\delta_{2D}(\boldsymbol \theta)$ map (upper large panel), computing the tidal field components (middle four panels) and comparing the results with the cosmic shear signal generated by the same mass distribution (bottom two panels). The tidal field maps clearly reproduce the cosmic shear maps, and the minus sign in front of both terms in Eq. (\ref{eq:tidal_th}) causes the IA to undo some of the lensing signal.
+
+\subsection{Infusion of intrinsic alignments}
+\label{subsec:IA_infusion}
+
+Having now produced shear catalogues and tidal field maps, we can now use Eq. \ref{eq:tidal_th} to couple linearly the alignment of galaxies with the local tidal field, or Eq. \ref{eq:tidal_th_TT} to use instead a quadratic coupling. These allow us to compute the intrinsic ellipticities ${\boldsymbol \epsilon}^{\rm int}$ for the four IA models described in Sec. \ref{sec:IA_th}, which we combine with the cosmic shear signal ${\boldsymbol g}$ to compute observed ellipticities: 
+\begin{eqnarray}
+{\boldsymbol \epsilon}^{\rm obs} = \frac{{\boldsymbol \epsilon}^{\rm int} + {\boldsymbol g}}{1 + {\boldsymbol \epsilon}^{\rm int}{\boldsymbol g^*}} \,, {\rm with \, \, } 
+{\boldsymbol \epsilon}^{\rm int}  = \frac{{\boldsymbol \epsilon}^{\rm IA} + {\boldsymbol \epsilon}^{\rm ran}}{1 + {\boldsymbol \epsilon}^{\rm IA}{\boldsymbol \epsilon^{\rm ran, *}}}.
+\label{eq:eps_obs}
+\end{eqnarray}
+In the above expressions, the denominators ensures that the combined  ellipticities never exceed unity.
+The complex spin-2 reduced shear ${\boldsymbol g} \equiv (\gamma_1 + {\rm i} \gamma_2)/(1+\kappa)$ is computed from the shear  $(\gamma_{1/2}$) and convergence ($\kappa$) maps, interpolated at the galaxy positions and redshifts. The  random orientation term ${\boldsymbol \epsilon}^{\rm ran}$ is drawn from two Gaussians (one per component) with their standard deviations matching the LSST-Y1 forecast, $\sigma_{\epsilon} = 027$. We further constraint  the random ellipticity to satisfy $|{\boldsymbol \epsilon}^{\rm ran}| \le 1.0$. 
+%We recall that since our simulated galaxy catalogues trace the dark matter density, our default IA-infusion method  is consistent with the $\delta$-NLA model (see Sec. \ref{subsec:IA_th_ext}). Analytical predictions for the two-point functions are more involved in this case \citep[see][]{Blazek2019} and not yet available on the public {\sc cosmoSIS} release. We therefore validate our methods with the standard NLA first, which we infuse by `correcting' the $\delta$-NLA measurement with Eq. (\ref{eq:tidal_th_deltaNLA}), i.e. by replacing ${\boldsymbol \epsilon}^{\rm IA}$ by ${\boldsymbol \epsilon}^{\rm IA}/(1 + b_{\rm TA} \delta)$ in our simulations. Once again, these are less realistic but better suited for validation of the measured $\gamma$-2PCFs against a theoretical model; after this is established, we use the $\delta-$NLA catalogues as our fiducial infusion model. 
+We re-iterate here that the same tidal fields, shear maps and IA coupling equations are used for the NLA and $\delta$-NLA models, and separately for the TT and $\delta$-TT models; these  only differ by the fact that in one case the galaxies are placed at random on the octant, while in the other case they are linearly tracing the dark matter.
+
+
+Also note that our current IA models make no differentiation between galaxy colours or type, and instead treats the full sample as a single population that has a single, effective, alignment signall \citep[see][for an example with a red/blue split]{DESY1_IA_Samuroff}.
+
+
+%---------------------
+\section{Validation with $\xi_{\pm}$}
+\label{sec:validation}
+
+
+
+
+% Requires the booktabs if the memoir class is not being used
+\begin{table}
+   \centering
+   %\topcaption{Table captions are better up top} % requires the topcapt package
+   \begin{tabular}{@{} lcr @{}} % Column formatting, @{} suppresses leading/trailing space
+      \hline
+      \hline
+       %\multicolumn{2}{c}{Item} \\
+      model   		& ($A_{\rm IA}, b_{\rm TA}, A_2)$ \\
+      \hline
+      NLA     		& {($\pm$1,0,0) }&  \\
+      \multirow{2}{*}{$\delta-$NLA }  	&   {($\pm$1,1,0)}   \\
+      							&  {(1,2,0)}   \\
+      TT 			&  {(0,0,$\pm$1)} &  \\
+      \multirow{2}{*}{$\delta$-TT} 	&  {(0,1,$\pm$1)}   \\
+      				&  {(0,2,1)}   \\
+      TATT- fiducial	&  { (1,1,1)}  \\
+      %TATT-DESY3	&   (-0.7,1,1.9) & \\
+      \hline
+      \hline
+
+   \end{tabular}
+   \caption{IA models infused in this work.}
+   \label{table:IAmodels}
+\end{table}
+
+
+%------------------------------
+\subsection{NLA model}
+\label{subsubsec:sigma_G}
+
+See Fig. \ref{fig:xi_NLA}
+%---------------
+\begin{figure*}
+%\includegraphics[width=\columnwidth]{graphs/frac_xip_IA1_skysim}
+\includegraphics[width=\columnwidth]{graphs/frac_xip_IA1_skysim_NLA_srd.jpg}
+\includegraphics[width=\columnwidth]{graphs/frac_xim_IA1_skysim_NLA_srd.jpg}
+\caption{Ratio between the shear correlation functions with and without IA, assuming the NLA model with $A_{\rm IA}=1.0$ both in the simulations and theory. Measurements shown in green and brown correspond to smoothing scales of 0.1 and 0.5 $h^{-1}$Mpc in the tidal field. There is no shape noise in the simulations, but it is included in the error bars.}
+\label{fig:xi_NLA}
+\end{figure*}
+%---------------
+
+
+%------------------------------
+\subsection{$\delta$-NLA model}
+\label{subsec:deltaNLA}
+
+See Fig. \ref{fig:xi_deltaNLA}.
+
+\begin{figure*}
+\includegraphics[width=\columnwidth]{graphs/frac_xip_IA1_skysim_deltaNLA_srd}
+\includegraphics[width=\columnwidth]{graphs/frac_xim_IA1_skysim_deltaNLA_srd}
+\caption{Same as Fig. \ref{fig:xi_NLA}, but for the $\delta$-NLA model with $A_{\rm IA}=1.0$ and $b_{\rm TA}=1.0$, and only for smoothing of 0.5$h^{-1}$Mpc. The dashed black lines show the NLA predictions to better highlight the differences.  }
+\label{fig:xi_deltaNLA}
+\end{figure*}
+
+
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{graphs/frac_xip_bta1_rescaled}
+\caption{Ratio between the shear correlation functions with and without IA in tomographic bin combination 2-5. The brown and green symbols show measurements from simulations constructed with $b_{\rm TA}$ = 0.0 and 2.0 respectively,  the black solid and dotted lines shown their predictions, while the blue symbols are obtained by rescaling $b_{\rm TA}$ = 1.0 simulations using Eq. \ref{eq:bta_rescale}.  }
+\label{fig:xi_deltaNLA_rescaled}
+\end{figure}
+
+
+We verified that it works equally well for $b_{\rm TA}$ = 1.0 and 2.0.
+
+%------------------------------
+
+Using this, we $b_{\rm TA}$-rescale our $b_{\rm TA}=1.0$ mock to $b_{\rm TA}=2.0$ and to $0.0$ mocks. Results are shown in Fig. \ref{fig:xi_deltaNLA_rescaled} for one of the tomographic bin. It works reasonably well, but lower redshift are less accurate due to the increased  shot noise (not shown), hence we do not recommend using this.
+
+%------------------------------
+\subsection{TT model}
+\label{subsec:TT}
+
+See Fig. \ref{fig:xi_TT}
+
+\begin{figure*}
+\includegraphics[width=\columnwidth]{graphs/frac_xip_IA1_skysim_TT_srd.jpg}
+\includegraphics[width=\columnwidth]{graphs/frac_xim_IA1_skysim_TT_srd.jpg}
+\caption{Same as Fig. \ref{fig:xi_NLA}, but for the TT model with $A_2=1.0$. Here, the dashed black lines show the NLA predictions to better highlight the differences. }
+\label{fig:xi_TT}
+\end{figure*}
+
+\begin{figure*}
+%\includegraphics[width=\columnwidth]{graphs/frac_xip_C2_m1_skysim_deltaTT}
+\includegraphics[width=\columnwidth]{graphs/frac_xip_IA1_skysim_deltaTT_srd.jpg}
+\includegraphics[width=\columnwidth]{graphs/frac_xim_IA1_skysim_deltaTT_srd.jpg}
+\caption{Same as Fig. \ref{fig:xi_deltaNLA}, but comparing the TT and the $\delta$-TT models, with $A_2=1.0$, $b_{\rm TA}$ = 1.0, and only for smoothing of 0.5$h^{-1}$Mpc. }
+\label{fig:xi_deltaTT}
+\end{figure*}
+
+
+
+To match the theory, we need to apply the following calibration: $\epsilon^{\rm IA, TT}(z<0.5) \rightarrow \epsilon^{\rm IA, TT} /2.5$.
+
+%------------------------------
+\subsection{$\delta$-TT model}
+\label{subsec:TT}
+
+See Fig. \ref{fig:xi_deltaTT}
+
+To match the TT theory, we need to apply the following calibration: $\epsilon^{\rm IA, TT}(z<0.5) \rightarrow \epsilon^{\rm IA, TT} /5.0$, followed by $\epsilon^{\rm IA, TT} \rightarrow \epsilon^{\rm IA, TT}/7.0$.
+
+
+
+%\subsection{Validation with full inference}
+ %\label{sec:inference}
+
+%priors, firecrown, Takahashi $P(k)$
+
+
+\section{Higher-order weak lensing statistics}
+\label{sec:HOWLS}
+
+... use the mocks from Table \ref{table:IAmodels} to compute derivatives. Show.
+
+
+%----------
+\section{Conclusions}
+\label{sec:conclusion}
+%----------
+
+\section*{Acknowledgements}
+
+JHD acknowledges support from an STFC Ernest Rutherford Fellowship (project reference ST/S004858/1). Ray-tracing computations were carried on the NERSC [acknowledgments] ... HACC [acknowledgements] ... OuterRim [Acknowledgments]
+\\
+
+Some of the results in this paper have been derived using the {\sc healpy} and {\sc HEALPix} packages.
+\\
+\\
+\\
+{\footnotesize All authors contributed to the development and writing of this paper. JHD led the analysis.... }
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Data Availability}
+
+ 
+%The SLICS numerical simulations can be found at http://slics.roe.ac.uk/, while the cosmo-SLICS can be made available upon request.
+
+
+
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+
+% The best way to enter references is to use BibTeX:
+
+\bibliographystyle{hapj}
+\bibliography{IA} % if your bibtex file is called example.bib
+
+
+% Alternatively you could enter them by hand, like this:
+% This method is tedious and prone to error if you have lots of references
+%\begin{thebibliography}{99}
+%\bibitem[\protect\citeauthoryear{Author}{2012}]{Author2012}
+%Author A.~N., 2013, Journal of Improbable Astronomy, 1, 1
+%\bibitem[\protect\citeauthoryear{Others}{2013}]{Others2013}
+%Others S., 2012, Journal of Interesting Stuff, 17, 198
+%\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\section{Projected Tidal Field}
+\label{app:2d_TT}
+
+
+\JHD{[To reword]} We derive in this Appendix...  
+The prescription to assign an intrinsic alignment based on the projected tidal field, described in Eq. (\ref{eq:tidal_th}), involves the combinations $(s_{xx} - s_{yy})$ and $s_{xy}$, which therefore correspond to:
+\begin{eqnarray}
+ \widetilde{\epsilon}_1^{\rm IA} (\boldsymbol k_{\perp})  &\propto& \left(\frac{k_x^2 - k_y^2}{k^2} \right) \widetilde{\delta}_{\rm 2D}(\boldsymbol k_{\perp})\mathcal{G_{\rm 2D}}(\sigma_{\rm G})  \, ,\nonumber \\
+ \widetilde{\epsilon}_2^{\rm IA} (\boldsymbol k_\perp)  &\propto& \left(\frac{k_x k_y}{k^2} \right) \widetilde {\delta}_{\rm 2D}(\boldsymbol k_\perp)\mathcal{G_{\rm 2D}}(\sigma_{\rm G}) 
+ %\label{eq:sij}
+\end{eqnarray}
+
+Aside from the smoothing kernel, these are the same filters that are used for converting convergence maps to shear maps under the \citet[][KS hereafter]{KaiserSquires} inversion:
+ \begin{eqnarray}
+ \widetilde{\gamma_1} (\boldsymbol \ell)  = \left(\frac{k_x^2 - k_y^2}{k^2} \right) \widetilde {\kappa}(\boldsymbol \ell) \, , \hspace{1cm} \widetilde{\gamma_2} (\boldsymbol \ell)  = \left(\frac{k_x k_y}{k^2} \right) \widetilde {\kappa}(\boldsymbol \ell)
+ %\label{eq:sij}
+\end{eqnarray}
+meaning that on can linearly combine the mass sheets with the correct coefficients and obtain intrinsic ellipticities from a normal KS inversion. 
+
+Projecting out the $z$ components (e.i. $s_{0i}$=$s_{i0}$=0 for all $i$),  the tidal torque terms from Eq. (\ref{eq:tidal_th_TT}) can be expanded as:
+ \begin{eqnarray}
+\gamma^{\rm TT}_{ij}&=& C_2 \left[\sum_{k=x,y} s_{ik} s_{kj} -\frac{1}{3} \delta_{ij} s^2\right] \\
+                                  &=&C_2 \left[ s_{ix}s_{xj}  + s_{iy}s_{yj}  -  \frac{1}{3} \delta_{ij} \left( s_{xx}^2 + s_{yy}^2 +2s_{xy}^2 \right)  \right] \, .
+\end{eqnarray}
+Specifically, this yields:
+ \begin{eqnarray}
+\gamma^{\rm TT}_{xx}&=& C_2 \left[\frac{2}{3}s_{xx}^2  -  \frac{1}{3}s_{yy}^2 + \frac{1}{3}s_{xy}^2 \right]\, ,  \nonumber \\
+\gamma^{\rm TT}_{yy}&=& C_2 \left[-\frac{1}{3}s_{xx}^2  +  \frac{2}{3}s_{yy}^2 + \frac{1}{3}s_{xy}^2  \right]\, , \\
+\gamma^{\rm TT}_{xy}&=& C_2 s_{xy}\left[s_{xx}+s_{yy}  \right]\, . \nonumber                                  
+\end{eqnarray}
+With the standard ellipticity definitions $\epsilon_1^{\rm TT}\equiv \gamma_{xx}^{\rm TT} - \gamma_{yy}^{\rm TT}$ and $\epsilon_2^{\rm TT}\equiv -2 \gamma_{xy}$, we obtain:
+\begin{eqnarray}
+\epsilon_1^{\rm TT} = C_2  \left[ s_{xx}^2 - s_{yy}^2\right] \, , \epsilon_2^{\rm TT} = -2 C_2 s_{xy}\left[s_{xx}+s_{yy}  \right]\, .
+\end{eqnarray}
+In the TATT model, the total intrinsic ellipticity component is therefore given by $\epsilon_{1/2}^{\rm IA} = \epsilon_{1/2}^{\rm TATT} = \epsilon_{1/2}^{\delta{\rm-NLA}} + \epsilon_{1/2}^{\rm TT}$.
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
+
+% End of mnras_template.tex

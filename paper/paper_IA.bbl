@@ -1,0 +1,86 @@
+\begin{thebibliography}{11}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Asgari} {et~al.}(2021){Asgari}, {Lin}, {Joachimi}, {Giblin},
+  {Heymans}, {Hildebrandt}, {Kannawadi}, {St{\"o}lzner}, {Tr{\"o}ster}, {van
+  den Busch}, {Wright}, {Bilicki}, {Blake}, {de Jong}, {Dvornik}, {Erben},
+  {Getman}, {Hoekstra}, {K{\"o}hlinger}, {Kuijken}, {Miller}, {Radovich},
+  {Schneider}, {Shan}, \& {Valentijn}}]{KiDS1000_Asgari}
+{Asgari}, M. {et~al.} 2021, \aap, 645, A104, 2007.15633
+
+\bibitem[{{Bridle} \& {King}(2007)}]{NLA}
+{Bridle}, S., \& {King}, L. 2007, New Journal of Physics, 9, 444, 0705.0166
+
+\bibitem[{{Catelan} {et~al.}(2001){Catelan}, {Kamionkowski}, \&
+  {Blandford}}]{Catelan_IA_Tidal}
+{Catelan}, P., {Kamionkowski}, M., \& {Blandford}, R.~D. 2001, \mnras, 320, L7,
+  astro-ph/0005470
+
+\bibitem[{{Euclid Collaboration: Knabenhans} {et~al.}(2019){Euclid
+  Collaboration: Knabenhans}, {Stadel}, {Marelli}, {Potter}, {Teyssier},
+  {Legrand }, {Schneider}, {Sudret}, {Blot}, {Awan}, {Burigana}, {Carvalho},
+  {Kurki-Suonio}, \& {Sirri}}]{EuclidEmulator}
+{Euclid Collaboration: Knabenhans}, M. {et~al.} 2019, \mnras, 484, 5509,
+  1809.04695
+
+\bibitem[{{Heitmann} {et~al.}(2016){Heitmann}, {Bingham}, {Lawrence},
+  {Bergner}, {Habib}, {Higdon}, {Pope}, {Biswas}, {Finkel}, {Frontiere}, \&
+  {Bhattacharya}}]{miraTitan}
+{Heitmann}, K. {et~al.} 2016, \apj, 820, 108
+
+\bibitem[{{Jarvis} {et~al.}(2004){Jarvis}, {Bernstein}, \& {Jain}}]{TreeCorr}
+{Jarvis}, M., {Bernstein}, G., \& {Jain}, B. 2004, \mnras, 352, 338
+
+\bibitem[{{Kaiser} \& {Squires}(1993)}]{KaiserSquires}
+{Kaiser}, N., \& {Squires}, G. 1993, \apj, 404, 441
+
+\bibitem[{{Mead} {et~al.}(2020){Mead}, {Brieden}, {Tr{\"o}ster}, \&
+  {Heymans}}]{HMCode2020}
+{Mead}, A., {Brieden}, S., {Tr{\"o}ster}, T., \& {Heymans}, C. 2020, arXiv
+  e-prints, arXiv:2009.01858, 2009.01858
+
+\bibitem[{{Samuroff} {et~al.}(2019){Samuroff}, {Blazek}, {Troxel}, {MacCrann},
+  {Krause}, {Leonard}, {Prat}, {Gruen}, {Dodelson}, {Eifler}, {Gatti},
+  {Hartley}, {Hoyle}, {Larsen}, {Zuntz}, {Abbott}, {Allam}, {Annis},
+  {Bernstein}, {Bertin}, {Bridle}, {Brooks}, {Carnero Rosell}, {Carrasco Kind},
+  {Carretero}, {Castander}, {Cunha}, {da Costa}, {Davis}, {De Vicente},
+  {DePoy}, {Desai}, {Diehl}, {Dietrich}, {Doel}, {Flaugher}, {Fosalba},
+  {Frieman}, {Garc{\'\i}a-Bellido}, {Gaztanaga}, {Gerdes}, {Gruendl},
+  {Gschwend}, {Gutierrez}, {Hollowood}, {Honscheid}, {James}, {Kuehn},
+  {Kuropatkin}, {Lima}, {Maia}, {March}, {Marshall}, {Martini}, {Melchior},
+  {Menanteau}, {Miller}, {Miquel}, {Ogando}, {Plazas}, {Sanchez}, {Scarpine},
+  {Schindler}, {Schubnell}, {Serrano}, {Sevilla-Noarbe}, {Sheldon}, {Smith},
+  {Sobreira}, {Suchyta}, {Tarle}, {Thomas}, {Vikram}, \& {DES
+  Collaboration}}]{DESY1_IA_Samuroff}
+{Samuroff}, S. {et~al.} 2019, \mnras, 489, 5453, 1811.06989
+
+\bibitem[{{Takahashi} {et~al.}(2012){Takahashi}, {Sato}, {Nishimichi},
+  {Taruya}, \& {Oguri}}]{Takahashi2012}
+{Takahashi}, R., {Sato}, M., {Nishimichi}, T., {Taruya}, A., \& {Oguri}, M.
+  2012, \apj, 761, 152
+
+\bibitem[{{Troxel} {et~al.}(2018){Troxel}, {MacCrann}, {Zuntz}, {Eifler},
+  {Krause}, {Dodelson}, {Gruen}, {Blazek}, {Friedrich}, {Samuroff}, {Prat},
+  {Secco}, {Davis}, {Fert{\'e}}, {DeRose}, {Alarcon}, {Amara}, {Baxter},
+  {Becker}, {Bernstein}, {Bridle}, {Cawthon}, {Chang}, {Choi}, {De Vicente},
+  {Drlica-Wagner}, {Elvin-Poole}, {Frieman}, {Gatti}, {Hartley}, {Honscheid},
+  {Hoyle}, {Huff}, {Huterer}, {Jain}, {Jarvis}, {Kacprzak}, {Kirk}, {Kokron},
+  {Krawiec}, {Lahav}, {Liddle}, {Peacock}, {Rau}, {Refregier}, {Rollins},
+  {Rozo}, {Rykoff}, {S{\'a}nchez}, {Sevilla-Noarbe}, {Sheldon}, {Stebbins},
+  {Varga}, {Vielzeuf}, {Wang}, {Wechsler}, {Yanny}, {Abbott}, {Abdalla},
+  {Allam}, {Annis}, {Bechtol}, {Benoit-L{\'e}vy}, {Bertin}, {Brooks},
+  {Buckley-Geer}, {Burke}, {Carnero Rosell}, {Carrasco Kind}, {Carretero},
+  {Castander}, {Crocce}, {Cunha}, {D'Andrea}, {da Costa}, {DePoy}, {Desai},
+  {Diehl}, {Dietrich}, {Doel}, {Fernandez}, {Flaugher}, {Fosalba},
+  {Garc{\'\i}a-Bellido}, {Gaztanaga}, {Gerdes}, {Giannantonio}, {Goldstein},
+  {Gruendl}, {Gschwend}, {Gutierrez}, {James}, {Jeltema}, {Johnson}, {Johnson},
+  {Kent}, {Kuehn}, {Kuhlmann}, {Kuropatkin}, {Li}, {Lima}, {Lin}, {Maia},
+  {March}, {Marshall}, {Martini}, {Melchior}, {Menanteau}, {Miquel}, {Mohr},
+  {Neilsen}, {Nichol}, {Nord}, {Petravick}, {Plazas}, {Romer}, {Roodman},
+  {Sako}, {Sanchez}, {Scarpine}, {Schindler}, {Schubnell}, {Smith}, {Smith},
+  {Soares-Santos}, {Sobreira}, {Suchyta}, {Swanson}, {Tarle}, {Thomas},
+  {Tucker}, {Vikram}, {Walker}, {Weller}, {Zhang}, \& {DES
+  Collaboration}}]{DESY1_Troxel}
+{Troxel}, M.~A. {et~al.} 2018, \prd, 98, 043528, 1708.01538
+
+\end{thebibliography}
