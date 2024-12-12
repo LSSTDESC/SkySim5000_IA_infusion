@@ -59,6 +59,7 @@ def corner_colors(input_key):
         "deltaNLA_with_deltaNLA": '#800080',  # purple
         "TT_with_TT": '#ff7f0e',  # orange
         "deltaTT_with_deltaTT": '#ff0000',  # red
+        "deltaTT_with_TT": '#ff0000',  # red
         "HOD_NLA_with_deltaNLA": '#9acd32',  # green
         "HOD_TT_with_TT": 'deeppink',  # hotpink
         "HOD_TT_with_deltaTT": 'hotpink',  # pink
@@ -88,6 +89,7 @@ def get_colors():
         "deltaNLA_with_deltaNLA": '#800080',  # purple
         "TT_with_TT": '#ff7f0e',  # orange
         "deltaTT_with_deltaTT": '#ff0000',  # red
+        "deltaTT_with_TT": '#ff0000',  # red
         "HOD_NLA_with_deltaNLA": '#9acd32',  # green
         "HOD_TT_with_TT": 'deeppink',  # hotpink
         "HOD_TT_with_deltaTT": 'hotpink',  # pink
