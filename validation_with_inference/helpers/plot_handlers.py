@@ -85,24 +85,14 @@ def get_colors():
     """
     # Base color definitions
     base_colors = {
-        "NLA_with_NLA": '#329acd',  # blue
-        "deltaNLA_with_deltaNLA": '#800080',  # purple
-        "TT_with_TT": '#ff7f0e',  # orange
-        "deltaTT_with_deltaTT": '#ff0000',  # red
-        "deltaTT_with_TT": '#ff0000',  # red
-        "HOD_NLA_with_deltaNLA": '#9acd32',  # green
-        "HOD_TT_with_TT": 'deeppink',  # hotpink
-        "HOD_TT_with_deltaTT": 'hotpink',  # pink
+        "NLA": '#329acd',  # blue
+        "deltaNLA": '#B332CD',  # purple
+        "TT": '#ff7f0e',  # orange
+        "deltaTT": '#ff0000',  # red
+        "TATT": '#ffc000',  # yellow
     }
 
-    # Add combinations with TATT
-    extended_colors = base_colors.copy()
-    for key in base_colors:
-        base_model = key.split("_with_")[0]  # Extract the base model (e.g., NLA)
-        tatt_key = f"{base_model}_with_TATT"
-        extended_colors[tatt_key] = '#ffc000'  # Yellow for TATT combinations
-
-    return extended_colors
+    return base_colors
 
 
 def get_legend_labels(sample1_key, sample2_key, sample3_key=None):
