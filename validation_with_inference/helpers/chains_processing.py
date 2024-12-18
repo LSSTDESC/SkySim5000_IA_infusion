@@ -71,7 +71,7 @@ base_targets = {
     "NLA": ["NLA", "TATT"],
     "deltaNLA": ["deltaNLA", "TATT"],
     "TT": ["TT", "TATT"],
-    "deltaTT": ["deltaTT", "TATT"],
+    "deltaTT": ["TT", "deltaTT", "TATT"],
     "HOD_NLA": ["deltaNLA", "TATT"],
     "HOD_TT": ["TT", "deltaTT", "TATT"],
 }

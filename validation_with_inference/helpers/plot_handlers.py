@@ -59,6 +59,7 @@ def corner_colors(input_key):
         "deltaNLA_with_deltaNLA": '#800080',  # purple
         "TT_with_TT": '#ff7f0e',  # orange
         "deltaTT_with_deltaTT": '#ff0000',  # red
+        "deltaTT_with_TT": '#ff0000',  # red
         "HOD_NLA_with_deltaNLA": '#9acd32',  # green
         "HOD_TT_with_TT": 'deeppink',  # hotpink
         "HOD_TT_with_deltaTT": 'hotpink',  # pink
@@ -73,6 +74,25 @@ def corner_colors(input_key):
 
     # Return the color for the given input key
     return extended_colors.get(input_key, '#000000')  # Default to black if the key is not found
+
+
+def get_colors():
+    """
+    Return a dictionary of colors for various keys, dynamically adding combinations with TATT.
+
+    Returns:
+        dict: A dictionary mapping keys to their associated colors.
+    """
+    # Base color definitions
+    base_colors = {
+        "NLA": '#329acd',  # blue
+        "deltaNLA": '#B332CD',  # purple
+        "TT": '#ff7f0e',  # orange
+        "deltaTT": '#ff0000',  # red
+        "TATT": '#ffc000',  # yellow
+    }
+
+    return base_colors
 
 
 def get_legend_labels(sample1_key, sample2_key, sample3_key=None):
@@ -129,12 +149,12 @@ def plot_triangle_combination(sample1_key, sample2_key, sample3_key=None, save_f
         sample3_key: Optional. Key for the third sample (e.g., "HOD_NLA_with_TT").
         save_fig: Boolean flag to save the figure as a PDF.
     """
-    # Collect samples and labels dynamically, ensuring sample2 is first
+    # Collect samples and labels
     sample_keys = [
-        samples[sample2_key],
-        samples[sample2_key],
-        samples[sample1_key],
-        samples[sample1_key],
+        samples[sample2_key],  # First sample
+        samples[sample2_key],  # First sample
+        samples[sample1_key],  # Second sample
+        samples[sample1_key],  # Second sample
     ]
 
     # Add sample3 if provided
@@ -183,3 +203,10 @@ def plot_triangle_combination(sample1_key, sample2_key, sample3_key=None, save_f
         keys_used = [key for key in [sample2_key, sample1_key, sample3_key] if key]
         filename = "_".join([key.replace("_with_", "-") for key in keys_used]) + "_combo.pdf"
         plt.savefig(f"{plot_path()}{filename}", dpi=300)
+
+def get_plot_settings():
+    g = plots.get_subplot_plotter(width_inch=8)
+    for setting, value in plot_settings.items():
+        setattr(g.settings, setting, value)
+
+    return g
