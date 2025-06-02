@@ -1,5 +1,5 @@
 import helpers.chains_processing as cp
-import matplotlib.pyplot as plt
+
 from getdist import plots
 
 
@@ -8,101 +8,37 @@ labels = cp.labels  # dictionary with the labels
 samples = cp.samples  # dictionary with the chains
 
 
-def get_kwargs(labels, colors, lw=2.5):
+def get_kwargs(key1, key2):
+    """
+    Generate keyword arguments for contour plots based on two keys.
+
+    Parameters:
+        key1 (str): the key of the first model (e.g., "NLA" or "TATT")
+        key2 (str): the key of the second model (e.g., "NLA" or "TATT")
+
+    Returns:
+        dict: keyword arguments for contour plots, including colors,
+              filled status, line styles, and line widths.
+    """
+    colors = get_colors()
+    colors_list = [colors[key1]] * 2 + [colors[key2]] * 2
+
     kwargs = {
-        'contour_colors': colors,
-        "filled": [False] * len(labels),
-        "contour_ls": ["-"] * len(labels),
-        "contour_lws": [lw] * len(labels),
+        'contour_colors': colors_list,
+        "filled": [False, True] * (len(colors_list)),
+        "contour_ls": ["-"] * len(colors_list),
+        "contour_lws": [2] * len(colors_list),
     }
     return kwargs
 
 
-# Plotting settings
-plot_settings = {
-    'linewidth': 2.5,  # Line width for plots and contours
-    'scaling_factor': False,  # Disable automatic scaling
-    'alpha_filled_add': 0.85,  # Opacity for filled elements
-    'axes_labelsize': 20,  # Font size for axes labels
-    'legend_rect_border': False,  # Disable border around legend rectangles
-    'axes_fontsize': 15,  # Font size for axes ticks
-    'figure_legend_frame': False,  # Disable frame around figure legend
-    'legend_fontsize': 14,  # Font size for legend
-    'linewidth_contour': 2.5,  # Line width for contour lines
-    'legend_frac_subplot_margin': 0.1,  # Margin fraction for subplot legends
-    'line_styles': ["-", "-", "-", "-", "-", "-", "-", "-"],  # Line styles for plots
-    'solid_contour_palefactor': 0.45,  # Pale factor for solid contours
-    'axis_marker_color': 'k',  # Color for markers
-    'axis_marker_ls': ':',  # Line style for markers
-    'axis_marker_lw': 1.5,  # Line width for markers
-}
-
-
-def plot_path():
-    path = "./output/corner_plots/"
-    return path
-
-
-def corner_colors(input_key):
-    """
-    Return the color for a given key, dynamically adding combinations with TATT.
-
-    Parameters:
-        input_key (str): The key for which to retrieve the color (e.g., "NLA_with_TATT").
-
-    Returns:
-        str: The color associated with the given key (e.g., "#ffc000").
-    """
-    # Base color definitions
-    base_colors = {
-        "NLA_with_NLA": '#329acd',  # blue
-        "deltaNLA_with_deltaNLA": '#800080',  # purple
-        "TT_with_TT": '#ff7f0e',  # orange
-        "deltaTT_with_deltaTT": '#ff0000',  # red
-        "deltaTT_with_TT": '#ff0000',  # red
-        "HOD_NLA_with_deltaNLA": '#9acd32',  # green
-        "HOD_TT_with_TT": 'deeppink',  # hotpink
-        "HOD_TT_with_deltaTT": 'hotpink',  # pink
-    }
-
-    # Add combinations with TATT
-    extended_colors = base_colors.copy()
-    for key in base_colors:
-        base_model = key.split("_with_")[0]  # Extract the base model (e.g., NLA)
-        tatt_key = f"{base_model}_with_TATT"
-        extended_colors[tatt_key] = '#ffc000'  # Yellow for TATT combinations
-
-    # Return the color for the given input key
-    return extended_colors.get(input_key, '#000000')  # Default to black if the key is not found
-
-
-def get_colors():
-    """
-    Return a dictionary of colors for various keys, dynamically adding combinations with TATT.
-
-    Returns:
-        dict: A dictionary mapping keys to their associated colors.
-    """
-    # Base color definitions
-    base_colors = {
-        "NLA": '#329acd',  # blue
-        "deltaNLA": '#B332CD',  # purple
-        "TT": '#ff7f0e',  # orange
-        "deltaTT": '#ff0000',  # red
-        "TATT": '#ffc000',  # yellow
-    }
-
-    return base_colors
-
-
-def get_legend_labels(sample1_key, sample2_key, sample3_key=None):
+def get_legend_labels(sample1_key, sample2_key):
     """
     Generate legend labels dynamically based on the provided sample keys.
 
     Parameters:
         sample1_key: Key for the first sample (e.g., "HOD_NLA_with_deltaNLA").
         sample2_key: Key for the second sample (e.g., "HOD_NLA_with_TATT").
-        sample3_key: Optional. Key for the third sample (e.g., "HOD_NLA_with_TT").
 
     Returns:
         list: Legend labels for the triangle plot.
@@ -128,84 +64,74 @@ def get_legend_labels(sample1_key, sample2_key, sample3_key=None):
         f"{model2_1} data with {model2_2} model",
     ]
 
-    # Add sample3 if provided
-    if sample3_key:
-        model3_1, model3_2 = format_model_name(sample3_key)
-        legend_labels += [
-            "_nolegend_",
-            f"{model3_1} data with {model3_2} model",
-        ]
-
     return legend_labels
 
 
-def plot_triangle_combination(sample1_key, sample2_key, sample3_key=None, save_fig=True):
+def plot_path():
     """
-    Generate and save a triangle plot comparing two or three samples dynamically.
+    Return the path where corner plots are saved.
 
-    Parameters:
-        sample1_key: Key for the first sample (mandatory, e.g., "HOD_NLA_with_deltaNLA").
-        sample2_key: Key for the second sample (mandatory, e.g., "HOD_NLA_with_TATT").
-        sample3_key: Optional. Key for the third sample (e.g., "HOD_NLA_with_TT").
-        save_fig: Boolean flag to save the figure as a PDF.
+    Returns:
+        str: Path to the directory for corner plots.
     """
-    # Collect samples and labels
-    sample_keys = [
-        samples[sample2_key],  # First sample
-        samples[sample2_key],  # First sample
-        samples[sample1_key],  # Second sample
-        samples[sample1_key],  # Second sample
-    ]
+    path = "./output/corner_plots/"
+    return path
 
-    # Add sample3 if provided
-    if sample3_key:
-        sample_keys.extend([samples[sample3_key], samples[sample3_key]])
 
-    # Generate legend labels using the helper function
-    legend_labels = get_legend_labels(sample1_key, sample2_key, sample3_key)
-
-    # Dynamically configure colors
-    colors_list = [
-        corner_colors(sample2_key),
-        corner_colors(sample2_key),
-        corner_colors(sample1_key),
-        corner_colors(sample1_key),
-    ]
-    if sample3_key:
-        colors_list.extend([corner_colors(sample3_key), corner_colors(sample3_key)])
-
-    # Plot parameters
-    kwargs = {
-        'contour_colors': colors_list,
-        "filled": [False, True] * (len(colors_list) // 2),
-        "contour_ls": ["-"] * len(colors_list),
-        "contour_lws": [2] * len(colors_list),
+def get_colors():
+    """
+    Return a dictionary of colors for keys that correspond to different models (file names).
+    """
+    base_colors = {
+        "TATT": '#ffc000',  # yellow
+        "NLA_with_NLA": '#329acd',
+        "deltaNLA_with_deltaNLA": '#a64da6',
+        "TT_with_TT": '#ff7f0e',
+        "deltaTT_with_deltaTT": '#ff3333',
+        "deltaTT_with_TT": '#ff0000',
+        "HOD_NLA_with_deltaNLA": '#a64da6',
+        "HOD_TT_with_TT": '#ff7f0e',
+        "HOD_TT_with_deltaTT": '#ff3333',
     }
 
-    g = plots.get_subplot_plotter(width_inch=8)
-    for setting, value in plot_settings.items():
-        setattr(g.settings, setting, value)
+    extended_colors = {}
+    for key in base_colors.keys():
+        extended_colors[key] = base_colors[key]
+        # Also add a _with_TATT version for each
+        base_model = key.split("_with_")[0]
+        extended_colors[f"{base_model}_with_TATT"] = '#ffc000'
 
-    # Use the truth values from the first sample
-    truth_values_key = sample2_key  # Adjusted to use sample2's truth values
+    return extended_colors
 
-    # Generate the triangle plot
-    g.triangle_plot(
-        sample_keys,
-        markers=truth_values[truth_values_key],
-        legend_labels=legend_labels,
-        legend_ncol=1,
-        **kwargs,
-    )
-
-    # Save the plots
-    if save_fig:
-        keys_used = [key for key in [sample2_key, sample1_key, sample3_key] if key]
-        filename = "_".join([key.replace("_with_", "-") for key in keys_used]) + "_combo.pdf"
-        plt.savefig(f"{plot_path()}{filename}", dpi=300)
 
 def get_plot_settings():
+    """
+    Create a GetDist plotter with custom settings.
+
+    Returns:
+        g (GetDistPlotter): A GetDist plotter object with custom settings.
+    """
     g = plots.get_subplot_plotter(width_inch=8)
+
+    # Plot settings
+    plot_settings = {
+        'linewidth': 2.5,  # Line width for plots and contours
+        'scaling_factor': False,  # Disable automatic scaling
+        'alpha_filled_add': 0.85,  # Opacity for filled elements
+        'axes_labelsize': 20,  # Font size for axes labels
+        'legend_rect_border': False,  # Disable border around legend rectangles
+        'axes_fontsize': 15,  # Font size for axes ticks
+        'figure_legend_frame': False,  # Disable frame around figure legend
+        'legend_fontsize': 14,  # Font size for legend
+        'linewidth_contour': 2.5,  # Line width for contour lines
+        'legend_frac_subplot_margin': 0.1,  # Margin fraction for subplot legends
+        'line_styles': ["-", "-", "-", "-", "-", "-", "-", "-"],  # Line styles for plots
+        'solid_contour_palefactor': 0.45,  # Pale factor for solid contours
+        'axis_marker_color': 'k',  # Color for markers
+        'axis_marker_ls': ':',  # Line style for markers
+        'axis_marker_lw': 1.5,  # Line width for markers
+    }
+
     for setting, value in plot_settings.items():
         setattr(g.settings, setting, value)
 
