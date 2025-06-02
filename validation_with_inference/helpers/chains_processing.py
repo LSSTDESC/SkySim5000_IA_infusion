@@ -88,6 +88,20 @@ truth_values_dict = {
     "TATT": [0.2648, 0.7525, 1.0, 0.0, 1.0]  # omega_m, S_8, A_IA, C_2, b_TA
 }
 
+truth_values_data_dict = {
+    "NLA_with_NLA": [0.2648, 0.7525, 1.0],  # omega_m, S_8, A_IA
+    "NLA_with_TATT": [0.2648, 0.7525, 1.0, 0.0, 0.0],  # omega_m, S_8, A_IA, C_2, b_TA
+    "NLA_with_NLA_w": [0.2648, -1.0, 0.7525, 1.0],  # omega_m, w, S_8, A_IA,
+    "NLA_with_TATT_w": [0.2648, -1.0, 0.7525, 1.0, 0.0, 0.0],  # omega_m, w, S_8, A_IA, C_2, b_TA
+    "deltaNLA_with_deltaNLA": [0.2648, 0.7525, 1.0, 1.0],  # omega_m, S_8, A_IA, b_TA
+    "deltaNLA_with_TATT": [0.2648, 0.7525, 1.0, 0.0, 1.0],  # omega_m, S_8, A_IA, C_2, b_TA
+    "TT_with_TT": [0.2648, 0.7525, 1.0],  # omega_m, S_8, C_2
+    "TT_with_TATT": [0.2648, 0.7525, 0.0, 1.0, 0.0],  # omega_m, S_8, A_IA, C_2, b_TA
+    "deltaTT_with_deltaTT": [0.2648, 0.7525, 1.0, 1.0],  # omega_m, S_8, C_2, b_TA
+    "deltaTT_with_TATT": [0.2648, 0.7525, 0.0, 1.0, 1.0],  # omega_m, S_8, A_IA, C_2, b_TA
+    "TATT": [0.2648, 0.7525, 1.0, 1.0, 1.0]  # omega_m, S_8, A_IA, C_2, b_TA
+}
+
 # Models and targets
 # For example, this will mean we have a chain called "NLA_with_TATT_w.txt"
 # for the NLA model with the TATT target and an extra suffix "_w"
