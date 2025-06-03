@@ -129,7 +129,7 @@ for model, targets in models_targets.items():
             if suffix:
                 # if w is varied, we add it to the labels
                 # Note that we have to add it in the right position
-                labels[key] = labels[key][:2] + ["w"] + labels[key][2:]
+                labels[key] = labels[key][:1] + ["w"] + labels[key][1:]
             truth_values[key] = truth_values_dict[target_base]
             if suffix:
                 truth_values[key] = truth_values[key][:1] + [-1.0] + truth_values[key][1:]
