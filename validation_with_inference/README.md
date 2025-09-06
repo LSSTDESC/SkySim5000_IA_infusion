@@ -27,7 +27,7 @@ We compare several IA models against the TATT (Tidal Alignment Tidal Torque) mod
 - **δTT** (Extended Tidal Torque)
 - **HOD NLA** (Halo Occupation Distribution for NLA)
 - **HOD TT** (Halo Occupation Distribution for TT)
-- **TATT** (Full tidal alignment + torque model)
+- **TATT** (Full Tidal Alignment + Tidal Torque model)
 
 Each IA model is run and compared against relevant targets (usually TATT, or a matching IA model), and their inference results are analyzed and visualized.
 
@@ -51,7 +51,7 @@ Each IA model is run and compared against relevant targets (usually TATT, or a m
 ### ⚠️ Important Note on Paths
 
 **WARNING:** The paths to input files (fiducial values, 2PCF FITS, n(z), priors, etc.) are hardcoded
-in the CosmoSIS `.ini` files in the `runs/` directory.
+in the `CosmoSIS`` `.ini` files in the `runs/` directory.
 **You must edit these paths to match your local setup.**
 
 ### ⚠️ Important Note on Chains
@@ -63,7 +63,7 @@ The results shown in Section 5 of the paper are based on the chains already stor
 
 You can use the `corner_plots_skysim500_ia_infusion.ipynb` notebook to load these chains and generate corner plots.
 
-The processing and preparation of chains for GetDist are handled by the `helpers/chains_processing.py` module,  
+The processing and preparation of chains for ``GetDist`` are handled by the `helpers/chains_processing.py` module,  
 while the plotting functionality is implemented in `helpers/plot_handlers.py`.
 
 
@@ -97,7 +97,7 @@ Priors and fiducial values are defined in `fiducial_values/` .ini files. A typic
 `[cosmological_parameters]`, `[intrinsic_alignment_parameters]` and other relevant parameters such as
 `[shear_calibration_parameters]` or `[wl_photoz_errors]`.
 
-### 📋 Fiducial Values, Priors, and Truth Values of Relevant Parameters
+### Fiducial Values, Priors, and Truth Values of Relevant Parameters
 
 | Parameter     | Prior Range (Fiducial Values (Prior Range) | [Outer Rim](https://arxiv.org/abs/1904.11970) Truth Value |
 |---------------|--------------------------------------------|-----------------------------------------------------------|
@@ -108,7 +108,7 @@ Priors and fiducial values are defined in `fiducial_values/` .ini files. A typic
 | $b_\mathrm{TA}$   | 1.0 (0.0 – 5.0)                            | 1.0                                                       |
 
 
-### 📋 **Table of Varied Parameters**
+### **Table of Varied Parameters**
 
 | Model      | File Key               | Cosmological Parameters       | IA Parameters Varied            |
 |------------|------------------------|-------------------------------|---------------------------------|
