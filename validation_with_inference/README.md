@@ -51,7 +51,7 @@ Each IA model is run and compared against relevant targets (usually TATT, or a m
 ### ⚠️ Important Note on Paths
 
 **WARNING:** The paths to input files (fiducial values, 2PCF FITS, n(z), priors, etc.) are hardcoded
-in the `CosmoSIS`` `.ini` files in the `runs/` directory.
+in the `CosmoSIS` `.ini` files in the `runs/` directory.
 **You must edit these paths to match your local setup.**
 
 ### ⚠️ Important Note on Chains
