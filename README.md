@@ -23,4 +23,5 @@ This repo contains a number of jupyter notebooks meant to validate the various m
 9-Results are compared in Compare_Mocks_Theory.ipynb 
 
 
-The IA-free data has also been validated with Namaster (see the Namaster notebook)
+The IA-free data has also been validated with Namaster (see the Namaster notebook).
+All other notebooks in this repo are unpolished, unfinished work so should not be used for science without thorough validation.
